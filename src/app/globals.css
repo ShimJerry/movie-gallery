@@ -5,13 +5,16 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --border-color: #99999980;
+  --hover-background: #f0f0f0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* 다크 모드 적용 */
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --border-color: #737373;
+  --hover-background: #1a1a1a;
 }
 
 body {
@@ -19,6 +22,45 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@layer components {
+  .flex-rcc {
+    @apply flex justify-center items-center;
+  }
+
+  .flex-ccc {
+    @apply flex flex-col justify-center items-center;
+  }
+
+  .flex-csc {
+    @apply flex flex-col justify-start items-center;
+  }
+
+  .flex-css {
+    @apply flex flex-col justify-start items-start;
+  }
+
+  .mode-hover-button {
+    @apply flex-rcc w-full font-[500] border-[1px] border-borderColor
+    h-14 px-6 text-xl transition-colors duration-300 rounded-lg;
+
+    &:hover {
+      background: var(--hover-background);
+    }
+  }
+
+
+  .sidebar {
+    @apply flex fixed transition-all duration-300 border-borderColor;
+    @apply flex-row gap-0 xl:items-start md:items-center md:flex-col md:gap-10;
+    @apply bottom-0 md:top-0 md:left-0;
+    @apply w-full h-16 xl:w-64 xl:pl-5 md:w-20 md:h-full md:py-7;
+    @apply border-t-[1px] border-r-0 md:border-r-[1px] md:border-t-0;
+  }
+
+
+}
+
 
 @layer utilities {
   .text-balance {
