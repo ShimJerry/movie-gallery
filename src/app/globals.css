@@ -13,7 +13,7 @@
 .dark {
   --background: #0a0a0a;
   --foreground: #ededed;
-  --border-color: #737373;
+  --border-color: #424242;
   --hover-background: #1a1a1a;
 }
 
@@ -49,13 +49,13 @@ body {
     }
   }
 
+  .main_content {
+    @apply mt-16 relative;
+  }
 
-  .sidebar {
-    @apply flex fixed transition-all duration-300 border-borderColor;
-    @apply flex-row gap-0 xl:items-start md:items-center md:flex-col md:gap-10;
-    @apply bottom-0 md:top-0 md:left-0;
-    @apply w-full h-16 xl:w-64 xl:pl-5 md:w-20 md:h-full md:py-7;
-    @apply border-t-[1px] border-r-0 md:border-r-[1px] md:border-t-0;
+  .navi {
+    @apply flex fixed border-borderColor z-20 gap-0 md:gap-10 bottom-0 md:top-0 w-full h-16 md:p-5;
+    @apply backdrop-blur-sm bg-opacity-50;
   }
 
 
@@ -63,6 +63,20 @@ body {
 
 
 @layer utilities {
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+
   .text-balance {
     text-wrap: balance;
   }

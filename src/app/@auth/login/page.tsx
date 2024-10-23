@@ -1,7 +1,5 @@
 import * as React from "react";
 import AuthButton from "@/component/button/AuthButton";
-import { Images } from "lucide-react";
-import { signInWithGitHub, signInWithGoogle } from "@/server_action/auth";
 
 const Page = () => {
   return (
@@ -14,12 +12,8 @@ const Page = () => {
           <span className={"w-full border-b-[1px] border-borderColor h-0"} />
         </div>
 
-        <form action={signInWithGoogle}>
-          <AuthButton authType={"google"} />
-        </form>
-        <form action={signInWithGitHub}>
-          <AuthButton authType={"github"} />
-        </form>
+        <AuthButton authType={"Google"} />
+        <AuthButton authType={"Github"} />
       </main>
     </div>
   );

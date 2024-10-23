@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import ThemeProvider from "@/component/provider/ThemeProvider";
-import ThemeButton from "@/component/button/ThemeButton";
 import NavigationLayout from "@/component/layout/NavigationLayout";
+import ReduxProvider from "@/component/provider/ReduxProvider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -22,23 +21,20 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
+  auth,
   children,
 }: Readonly<{
+  auth: React.ReactNode;
   children: React.ReactNode;
 }>) {
   return (
     <html lang="ko">
       <body className={`${geistMono.variable}`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ReduxProvider>
           <NavigationLayout />
-          <ThemeButton />
-          {children}
-        </ThemeProvider>
+          <div className={"main_content"}>{children}</div>
+          <div>{auth}</div>
+        </ReduxProvider>
       </body>
     </html>
   );
