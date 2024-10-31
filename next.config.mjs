@@ -7,7 +7,14 @@ const nextConfig = {
     deviceSizes: [640, 750, 828],
     imageSizes: [16, 32, 64, 128, 159, 256, 384],
   },
-  experimental: { instrumentationHook: true },
+  logging: {
+    fetches: {
+      fullUrl: true,
+    },
+  },
+  experimental: {
+    instrumentationHook: true,
+  },
   webpack(config, { isServer }) {
     if (isServer) {
       if (Array.isArray(config.resolve.alias)) {

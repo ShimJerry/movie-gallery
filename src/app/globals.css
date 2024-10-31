@@ -3,18 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --border-color: #99999980;
-  --hover-background: #f0f0f0;
-}
-
-/* 다크 모드 적용 */
-.dark {
   --background: #0a0a0a;
   --foreground: #ededed;
   --border-color: #424242;
   --hover-background: #1a1a1a;
+  --input-background: #424242;
+  --input-focus-background: #808080;
 }
 
 body {
@@ -28,6 +22,10 @@ body {
     @apply flex justify-center items-center;
   }
 
+  .flex-rsc {
+    @apply flex justify-start items-center;
+  }
+
   .flex-ccc {
     @apply flex flex-col justify-center items-center;
   }
@@ -36,25 +34,32 @@ body {
     @apply flex flex-col justify-start items-center;
   }
 
+  .flex-cec {
+    @apply flex flex-col justify-end items-center;
+  }
+
   .flex-css {
     @apply flex flex-col justify-start items-start;
   }
 
   .mode-hover-button {
-    @apply flex-rcc w-full font-[500] border-[1px] border-borderColor
-    h-14 px-6 text-xl transition-colors duration-300 rounded-lg;
+    @apply flex-rcc font-[500] border-[1px] border-borderColor
+    h-14 px-6 text-xl transition-colors duration-300 rounded-lg w-[320px] sm:min-w-[400px]
+    hover:bg-hoverBackground;
+  }
 
-    &:hover {
-      background: var(--hover-background);
-    }
+  .mode-focus-input {
+    @apply flex-rsc w-[320px] sm:min-w-[400px] font-[500] border-[1px] border-borderColor
+    h-14 p-3 text-xs transition-colors duration-300 bg-hoverBackground focus:bg-inputBackground
+    rounded-sm
   }
 
   .main_content {
     @apply mt-16 relative;
   }
 
-  .navi {
-    @apply flex fixed border-borderColor z-20 gap-0 md:gap-10 bottom-0 md:top-0 w-full h-16 md:p-5;
+  .md_navi {
+    @apply hidden md:flex md:sticky border-borderColor z-10 gap-10 top-0 w-full h-16 p-5;
     @apply backdrop-blur-sm bg-opacity-50;
   }
 
@@ -63,6 +68,12 @@ body {
 
 
 @layer utilities {
+  @keyframes rotate-spinner {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -79,5 +90,10 @@ body {
 
   .text-balance {
     text-wrap: balance;
+  }
+
+  .spinner {
+    @apply w-12 h-12 rounded-full border-[5px] border-gray-600 border-t-transparent;
+    animation: rotate-spinner 1s linear infinite;
   }
 }

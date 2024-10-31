@@ -11,6 +11,9 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
         borderColor: "var(--border-color)",
+        hoverBackground: "var(--hover-background)",
+        inputBackground: "var(--input-background)",
+        inputFocusBackground: "var(--input-focus-background)",
       },
       minWidth: {
         sm: "640px",
